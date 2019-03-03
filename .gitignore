@@ -1,0 +1,7 @@
+### Gradle ###
+.gradle/
+out/
+
+### IntelliJ IDEA ###
+.idea/
+/out/
