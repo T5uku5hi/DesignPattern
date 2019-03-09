@@ -7,20 +7,20 @@ public class TextBuilder extends Builder {
     @Override
     protected void buildTitle(String title) {
         buffer.append("==============================\n");
-        buffer.append("『 " + title + " 』\n");
+        buffer.append("『 ").append(title).append(" 』\n");
         buffer.append("\n");
     }
 
     @Override
     protected void buildString(String str) {
-        buffer.append("■ " + str + "\n");
+        buffer.append("■ ").append(str).append("\n");
         buffer.append("\n");
     }
 
     @Override
     protected void buildItems(String[] items) {
-        for (int i = 0; i < items.length; i++) {
-            buffer.append((" ・" + items[i] + "\n"));
+        for (String item : items) {
+            buffer.append(" ・").append(item).append("\n");
         }
         buffer.append("\n");
     }

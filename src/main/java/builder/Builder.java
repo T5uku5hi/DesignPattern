@@ -4,26 +4,26 @@ public abstract class Builder {
 
     private boolean initialized = false;
 
-    public void makeTitle(String title) {
+    void makeTitle(String title) {
         if (!initialized) {
             buildTitle(title);
             initialized = true;
         }
     }
 
-    public void makeString(String str) {
+    void makeString(String str) {
         if (initialized) {
             buildString(str);
         }
     }
 
-    public void makeItems(String[] items) {
+    void makeItems(String[] items) {
         if (initialized) {
             buildItems(items);
         }
     }
 
-    public void close() {
+    void close() {
         if (initialized) {
             buildDone();
         }

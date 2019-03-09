@@ -29,8 +29,8 @@ public class HTMLBuilder extends Builder {
     @Override
     protected void buildItems(String[] items) {
         writer.println("<ul>");
-        for (int i = 0; i < items.length; i++) {
-            writer.println("<li>" + items[i] + "</li>");
+        for (String item : items) {
+            writer.println("<li>" + item + "</li>");
         }
         writer.println("</ul>");
     }
