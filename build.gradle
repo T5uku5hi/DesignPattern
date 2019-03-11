@@ -11,6 +11,20 @@ repositories {
     mavenCentral()
 }
 
+ext {
+    versions = ext {
+        junit5 = '5.3.2'
+    }
+}
+
+test {
+    useJUnitPlatform {
+        includeEngines 'junit-jupiter'
+    }
+}
+
 dependencies {
-    testCompile group: 'junit', name: 'junit', version: '4.12'
+    testCompile("org.junit.jupiter:junit-jupiter-api:${versions.junit5}")
+    testCompile("org.junit.jupiter:junit-jupiter-params:${versions.junit5}")
+    testRuntime("org.junit.jupiter:junit-jupiter-engine:${versions.junit5}")
 }
