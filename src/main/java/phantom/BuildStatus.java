@@ -1,0 +1,4 @@
+package phantom;
+
+interface BuildStatus {
+}
