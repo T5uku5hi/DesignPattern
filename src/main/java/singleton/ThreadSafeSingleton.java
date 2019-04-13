@@ -1,9 +1,9 @@
 package singleton;
 
-public class NonThreadSafeSingleton {
+public class ThreadSafeSingleton {
 
-    private static NonThreadSafeSingleton singleton = null;
-    private NonThreadSafeSingleton(){
+    private static ThreadSafeSingleton singleton = null;
+    private ThreadSafeSingleton(){
         System.out.println("インスタンスを生成しました");
         slowdown();
     }
@@ -16,9 +16,9 @@ public class NonThreadSafeSingleton {
         }
     }
 
-    public static NonThreadSafeSingleton getInstance() {
+    public static synchronized ThreadSafeSingleton getInstance() {
         if (singleton == null) {
-            singleton = new NonThreadSafeSingleton();
+            singleton = new ThreadSafeSingleton();
         }
         return singleton;
     }

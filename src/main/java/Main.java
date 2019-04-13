@@ -1,4 +1,4 @@
-import singleton.NonThreadSafeSingleton;
+import singleton.ThreadSafeSingleton;
 
 public class Main extends Thread {
 
@@ -11,7 +11,7 @@ public class Main extends Thread {
     }
 
     public void run() {
-        NonThreadSafeSingleton obj = NonThreadSafeSingleton.getInstance();
+        ThreadSafeSingleton obj = ThreadSafeSingleton.getInstance();
         System.out.println(getName() + ": obj = " + obj);
     }
 
