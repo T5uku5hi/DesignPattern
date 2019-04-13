@@ -1,43 +1,21 @@
-import builder.Director;
-import builder.HTMLBuilder;
-import builder.MarkDownBuilder;
-import builder.TextBuilder;
+import singleton.NonThreadSafeSingleton;
 
-public class Main {
+public class Main extends Thread {
 
     public static void main(String[] args) {
-        if (args.length != 1) {
-            usage();
-            System.exit(0);
-        }
-
-        if (args[0].equals("plain")) {
-            TextBuilder textBuilder = new TextBuilder();
-            Director director = new Director(textBuilder);
-            director.construct();
-            String result = textBuilder.getResult();
-            System.out.println(result);
-        } else if (args[0].equals("html")) {
-            HTMLBuilder htmlBuilder = new HTMLBuilder();
-            Director director = new Director(htmlBuilder);
-            director.construct();
-            String filename = htmlBuilder.getResult();
-            System.out.println(filename + "が作成されました。");
-        } else if (args[0].equals("md")) {
-            MarkDownBuilder markDownBuilder = new MarkDownBuilder();
-            Director director = new Director(markDownBuilder);
-            director.construct();
-            String filename = markDownBuilder.getResult();
-            System.out.println(filename + "が作成されました。");
-        } else {
-            usage();
-            System.exit(0);
-        }
+        System.out.println("Start.");
+        new Main("A").start();
+        new Main("B").start();
+        new Main("C").start();
+        System.out.println("End.");
     }
 
-    public static void usage() {
-        System.out.println("Usage: java Main plain | プレーンテキストで文章作成");
-        System.out.println("Usage: java Main html | HTMLファイルで文章作成");
-        System.out.println("Usage: java Main md | Markdownファイルで文章作成");
+    public void run() {
+        NonThreadSafeSingleton obj = NonThreadSafeSingleton.getInstance();
+        System.out.println(getName() + ": obj = " + obj);
+    }
+
+    private Main(String name) {
+        super(name);
     }
 }
