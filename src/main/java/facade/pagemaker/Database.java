@@ -4,13 +4,13 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
 
-public class Database {
+class Database {
 
     private Database(){
         // newでインスタンスを生成させないためにprivate宣言
     }
 
-    public static Properties getProperities(String dbName) {
+    static Properties getProperties(String dbName) {
         String filename = dbName + ".txt";
         Properties prop = new Properties();
         try {
