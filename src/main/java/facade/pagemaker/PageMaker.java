@@ -28,9 +28,9 @@ public class PageMaker {
             Properties mailProp = Database.getProperties("maildata");
             HtmlWriter writer = new HtmlWriter(new FileWriter(fileName));
             writer.title("Link Page");
-            for (String key : mailProp.stringPropertyNames()) {
+            mailProp.stringPropertyNames().forEach(StreamHelper.throwingConsumer(key -> {
                 writer.mailTo(key, mailProp.getProperty(key));
-            }
+            }));
             writer.close();
         } catch (Exception e) {
             e.printStackTrace();
